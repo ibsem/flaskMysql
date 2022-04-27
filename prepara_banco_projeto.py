@@ -1,6 +1,10 @@
+
+
 import MySQLdb
 print('Conectando...')
+
 conn = MySQLdb.connect(user='root', passwd='root', host='localhost', port=3306)
+#conexaoProducao = MySQLdb.connect(user='root', passwd='2174657354', host='192.14.132.54', port=3306)
 
 # Descomente se quiser desfazer o banco...
 conn.cursor().execute("DROP DATABASE `gpmio`;")
