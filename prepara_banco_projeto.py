@@ -3,7 +3,7 @@
 import MySQLdb
 print('Conectando...')
 
-conn = MySQLdb.connect(user='root', passwd='root', host='localhost', port=3306)
+conn = MySQLdb.connect(user='root', passwd='Mimama12.', host='localhost', port=3306)
 #conexaoProducao = MySQLdb.connect(user='root', passwd='2174657354', host='192.14.132.54', port=3306)
 
 # Descomente se quiser desfazer o banco...
@@ -41,7 +41,7 @@ cursor.executemany(
             ('root', 'Root', 'root')
       ])
 
-cursor.execute('select * from jogoteca.usuario')
+cursor.execute('select * from gpmio.usuario')
 print(' -------------  Usuários:  -------------')
 for user in cursor.fetchall():
     print(user[1])
