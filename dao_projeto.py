@@ -5,7 +5,7 @@ SQL_PROJETO_POR_ID = 'SELECT id, nome, descricao, lider, github, url from projet
 SQL_USUARIO_POR_ID = 'SELECT id, nome, senha from usuario where id = %s'
 SQL_ATUALIZA_PROJETO = 'UPDATE projeto SET nome=%s, descricao=%s, lider=%s, github=%s, url=%s where id = %s'
 SQL_BUSCA_PROJETOS = 'SELECT id, nome, descricao, lider, github, url from projeto'
-SQL_CRIA_PROJETO = 'INSERT into projeto (nome, descricao, lider, github, url) values (%s, %s, %s)'
+SQL_CRIA_PROJETO = 'INSERT into projeto (nome, descricao, lider, github, url) values (%s, %s, %s,%s,%s)'
 
 
 class ProjetoDao:
