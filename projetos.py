@@ -47,7 +47,7 @@ def criar():
 @app.route('/editar/<int:id>')
 def editar(id):
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect(url_for('login', proxima=url_for('editar')))
+        return redirect(url_for('login', proxima=url_for('index')))
     projeto = projeto_dao.busca_por_id(id)
     return render_template('editar.html', titulo='Editando Projeto', projeto=projeto)
 
