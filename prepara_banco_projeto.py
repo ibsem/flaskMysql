@@ -1,36 +1,28 @@
+import pymysql
 
-
-import MySQLdb
 print('Conectando...')
 
-conn = MySQLdb.connect(user='root', passwd='root', host='localhost', port=3306)
+conn = pymysql.connect(user='root', passwd='root', host='localhost', port=3306)
 #conexaoProducao = MySQLdb.connect(user='root', passwd='2174657354', host='192.14.132.54', port=3306)
 
 # Descomente se quiser desfazer o banco...
-conn.cursor().execute("DROP DATABASE `gpmio`;")
-conn.commit()
+#conn.cursor().execute("DROP DATABASE `gpmio`;")
+#conn.commit()
 
-criar_tabelas = '''SET NAMES utf8;
-    CREATE DATABASE `gpmio` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
-    USE `gpmio`;
-    CREATE TABLE `projeto` (
-      `id` int(11) NOT NULL AUTO_INCREMENT,
-      `nome` varchar(50) COLLATE utf8_bin NOT NULL,
-      `descricao` text COLLATE utf8_bin NOT NULL,
-      `lider` varchar(100) COLLATE utf8_bin NOT NULL,
-      `github` varchar(100) COLLATE utf8_bin NOT NULL,
-      `url` varchar(100) COLLATE utf8_bin NOT NULL,
-      
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-    CREATE TABLE `usuario` (
-      `id` varchar(8) COLLATE utf8_bin NOT NULL,
-      `nome` varchar(20) COLLATE utf8_bin NOT NULL,
-      `senha` varchar(8) COLLATE utf8_bin NOT NULL,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;'''
+criar_tabelas = '''SET NAMES utf8;CREATE DATABASE `gpmio`; USE `gpmio`;CREATE TABLE `projeto` (`id` int(11) NOT NULL AUTO_INCREMENT,`nome` varchar(50) COLLATE utf8_bin NOT NULL,      `descricao` text COLLATE utf8_bin NOT NULL,      `lider` varchar(100) COLLATE utf8_bin NOT NULL,      `github` varchar(100) COLLATE utf8_bin NOT NULL,      `url` varchar(100) COLLATE utf8_bin NOT NULL,            PRIMARY KEY (`id`)    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;    CREATE TABLE `usuario` (      `id` varchar(8) COLLATE utf8_bin NOT NULL,      `nome` varchar(20) COLLATE utf8_bin NOT NULL,      `senha` varchar(8) COLLATE utf8_bin NOT NULL,      PRIMARY KEY (`id`)    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+'''
 
-conn.cursor().execute(criar_tabelas)
+cursor = conn.cursor()
+# Dividir os comandos SQL separados por ';'
+comandos = criar_tabelas.split(';')
+
+# Executar cada comando individualmente
+for comando in comandos:
+    if comando.strip() != '':
+        cursor.execute(comando)
+
+# Fechar o cursor e commitar as alterações
+cursor.close()
 
 # inserindo usuarios
 cursor = conn.cursor()
@@ -41,7 +33,7 @@ cursor.executemany(
             ('root', 'Root', 'root')
       ])
 
-cursor.execute('select * from jogoteca.usuario')
+cursor.execute('select * from gpmio.usuario')
 print(' -------------  Usuários:  -------------')
 for user in cursor.fetchall():
     print(user[1])

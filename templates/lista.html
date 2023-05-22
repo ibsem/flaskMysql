@@ -1,29 +1,33 @@
 {% extends "template.html" %}
 {% block conteudo %}
     <a class="btn btn-primary" href="{{ url_for('novo') }}">Novo Projeto</a>
-    <table class="table table-striped table-responsive table-bordered">
+    
+    <table class=" table table-striped table-responsive table-bordered ">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>Lider</th>
-                <th>Github</th>
-                <th>URL</th>
+                <th class="nome">Nome</th>
+                <th >Descricao</th>
+                <th >Lider</th>
+                <th >Github</th>
+                <th >URL</th>
+                <th >EDIT</th>
+                <th >DEL</th>
             </tr>
         </thead>
         <tbody>
         {% for projeto in projetos %}
                         <tr>
-                            <td>{{ projeto.nome }}</td>
-                            <td>{{ projeto.descricao }}</td>
-                            <td>{{ projeto.lider }}</td>
-                            <td>{{ projeto.github }}</td>
-                            <td>{{ projeto.url }}</td>
-                            <td><a href="{{ url_for('editar', id=projeto.id) }}">Editar</a></td> 
-                            <td><a href="{{ url_for('deletar', id=projeto.id) }}">Deletar</a></td> 
+                            <td class="nome">{{ projeto.nome }}</td>
+                            <td class="w-40">{{ projeto.descricao }}</td>
+                            <td class="w-10">{{ projeto.lider }}</td>
+                            <td class="w-10">{{ projeto.github }}</td>
+                            <td class="w-10">{{ projeto.url }}</td>
+                            <td class="w-5"><a href="{{ url_for('editar', id=projeto.id) }}">Editar</a></td> 
+                            <td class="w-5"><a href="{{ url_for('deletar', id=projeto.id) }}">Deletar</a></td> 
                             
                         </tr>
         {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}
