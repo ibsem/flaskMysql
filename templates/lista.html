@@ -5,19 +5,19 @@
     <table class=" table table-striped table-responsive table-bordered ">
         <thead>
             <tr>
-                <th class="nome">Nome</th>
-                <th >Descricao</th>
-                <th >Lider</th>
-                <th >Github</th>
-                <th >URL</th>
-                <th >EDIT</th>
-                <th >DEL</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Lider</th>
+                    <th scope="col">Github</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DEL</th>
             </tr>
         </thead>
         <tbody>
         {% for projeto in projetos %}
                         <tr>
-                            <td class="nome">{{ projeto.nome }}</td>
+                            <td class="w-10">{{ projeto.nome }}</td>
                             <td class="w-40">{{ projeto.descricao }}</td>
                             <td class="w-10">{{ projeto.lider }}</td>
                             <td class="w-10">{{ projeto.github }}</td>

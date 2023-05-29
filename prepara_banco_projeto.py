@@ -3,11 +3,10 @@ import pymysql
 print('Conectando...')
 
 conn = pymysql.connect(user='root', passwd='root', host='localhost', port=3306)
-#conexaoProducao = MySQLdb.connect(user='root', passwd='2174657354', host='192.14.132.54', port=3306)
 
 # Descomente se quiser desfazer o banco...
-#conn.cursor().execute("DROP DATABASE `gpmio`;")
-#conn.commit()
+conn.cursor().execute("DROP DATABASE `gpmio`;")
+conn.commit()
 
 criar_tabelas = '''SET NAMES utf8;CREATE DATABASE `gpmio`; USE `gpmio`;CREATE TABLE `projeto` (`id` int(11) NOT NULL AUTO_INCREMENT,`nome` varchar(50) COLLATE utf8_bin NOT NULL,      `descricao` text COLLATE utf8_bin NOT NULL,      `lider` varchar(100) COLLATE utf8_bin NOT NULL,      `github` varchar(100) COLLATE utf8_bin NOT NULL,      `url` varchar(100) COLLATE utf8_bin NOT NULL,            PRIMARY KEY (`id`)    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;    CREATE TABLE `usuario` (      `id` varchar(8) COLLATE utf8_bin NOT NULL,      `nome` varchar(20) COLLATE utf8_bin NOT NULL,      `senha` varchar(8) COLLATE utf8_bin NOT NULL,      PRIMARY KEY (`id`)    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 '''
@@ -47,13 +46,13 @@ cursor.executemany(
              'Keliven',
              'https://github.com/iKeliven/EasyChurras',
              ''),
-            ('Fin4Teen', 'Desenvolver um Aplicativo Mobile Android, com formato de uma plataforma educativa, onde irá ter duas seções; uma com formato de biblioteca e outra de um jogo educativo. Terá como base, a educação financeira em todo o aplicativo. Na seção de biblioteca, haverá videoaulas com instruções do jogo e videoaulas com viés educativo sobre o mercado financeiro, bolsa de valores e investimentos, para adolescentes.'
+            ('Fin4Teen', 'Desenvolver um Aplicativo Mobile Android, '
             ,'','',''),
-            ('Elas ','O Elas é um aplicativo de alerta de abuso sexual com geolocalização para notificar imediatamente a polícia quando a vítima se sentir em perigo. O projeto esta sendo feito como forma de um trabalho da faculdade, mas esperamos conseguir levar a ideia adiante e ajudar diversas pessoas que possam passar por tentativas ou crimes de abuso. O objetivo do aplicativo é notificar a policia por meio de uma API. O aplicativo é destinado a todas as pessoas que sofrem, já sofreram ou tenham medo de serem vítimas de violência sexual ou doméstica.',
+            ('Elas ','O Elas é um aplicativo de alerta de abuso sexual c',
             '','',''),
             ('Vamos Jogar','Rede social para praticantes de esportes coletivos',
             '','',''),
-            ('LinkMe', 'As soluções de hoje tentam atender as vagas e aos candidatos de diversos setores/níveis de trabalho, de um gerente ao estagiário, ou seja, muito amplo e diversificado. Assim, segmentando apenas na área do estágio, nosso produto pode ser mais bem trabalhado para esse público específico.'
+            ('LinkMe', 'As soluções de hoje tentam atender as vagas e aos candidatos de diversos setores'
             ,'','',''),
             ('PODI', 'Aplicativo de gerenciamento de filas de atendimento hospitalares', '', '',''),
       ])
